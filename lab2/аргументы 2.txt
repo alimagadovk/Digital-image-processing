@@ -1,0 +1,17 @@
+e test_PDF.pdf encoded_PDF_addaptive
+e test_PDF.pdf test_PDF.pdf encoded_PDF_not_addaptive
+
+e quantized_with_noise.bmp encoded_quantized_with_noise_addaptive
+e quantized_with_noise.bmp quantized_with_noise.bmp encoded_quantized_with_noise_not_addaptive
+
+e quantized_without_noise.bmp encoded_quantized_without_noise_addaptive
+e quantized_without_noise.bmp quantized_without_noise.bmp encoded_quantized_without_noise_not_addaptive
+
+e row1.bin encoded_row1_addaptive
+e row1.bin row1.bin encoded_row1_not_addaptive
+
+e row2.bin encoded_row2_addaptive
+e row2.bin row2.bin encoded_row2_not_addaptive
+
+e row3.bin encoded_row3_addaptive
+e row3.bin row3.bin encoded_row3_not_addaptive
