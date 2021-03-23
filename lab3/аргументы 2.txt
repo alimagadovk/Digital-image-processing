@@ -1,0 +1,39 @@
+1
+e quantized_without_noise.bin encoded_quantized_without_noise
+d encoded_quantized_without_noise decoded_quantized_without_noise.bin
+
+
+e quantized_with_noise.bin encoded_quantized_with_noise
+d encoded_quantized_with_noise decoded_quantized_with_noise.bin
+
+
+
+
+2
+e quantized_without_noise.bin encoded_quantized_without_noise_16hist
+d encoded_quantized_without_noise_16hist decoded_quantized_without_noise_16hist.bin
+
+
+
+e quantized_with_noise.bin encoded_quantized_with_noise_16hist
+d encoded_quantized_with_noise_16hist decoded_quantized_with_noise_16hist.bin
+
+
+
+3
+e quantized_without_noise.bin encoded_quantized_without_noise_256hist
+d encoded_quantized_without_noise_256hist decoded_quantized_without_noise_256hist.bin
+
+
+
+e quantized_with_noise.bin encoded_quantized_with_noise_256hist
+d encoded_quantized_with_noise_256hist decoded_quantized_with_noise_256hist.bin
+
+4
+e quantized_without_noise.bin encoded_quantized_without_noise_256hist_minmax
+d encoded_quantized_without_noise_256hist_minmax decoded_quantized_without_noise_256hist_minmax.bin
+
+
+
+e quantized_with_noise.bin encoded_quantized_with_noise_256hist_minmax
+d encoded_quantized_with_noise_256hist_minmax decoded_quantized_with_noise_256hist_minmax.bin
