@@ -59,8 +59,7 @@ ii = [1 1 2 3 2 1 1 2 3 4 5 4 3 2 1 1 2 3 4 5 6 7 6 5 4 3 2 1 ....
  1 2 3 4 5 6 7 8 8 7 6 5 4 3 2 3 4 5 6 7 8 8 7 6 5 4 5 6 7 8 8 7 6 7 8 8];
 jj = [ 1 2 1 1 2 3 4 3 2 1 1 2 3 4 5 6 5 4 3 2 1 1 2 3 4 5 6 7 8 ....
     7 6 5 4 3 2 1 2 3 4 5 6 7 8 8 7 6 5 4 3 4 5 6 7 8 8 7 6 5 6 7 8 8 7 8];
-ii = ii(end:-1:1);
-jj = jj(end:-1:1);
+
 
 out = fopen('jp.ar',"w");  % выходной файл сжатых данных
 start_encoding;
@@ -69,7 +68,8 @@ start_encoding;
 cum_freq(130:NO_OF_SYMBOLS+1) = cum_freq(130:NO_OF_SYMBOLS+1) +6000;
 
 fprintf("Кодирование...\n");
-for ij=2:64   %К ПУНКТУ №2 ЗАДАНИЯ ij=64:-1:2
+%for ij=2:64   %К ПУНКТУ №2 ЗАДАНИЯ ij=64:-1:2
+for ij=64:-1:2
     %  AC-коэффициенты 
     i = ii(ij);
     j = jj(ij);
@@ -108,7 +108,8 @@ start_decoding;
 % К ПУНКТУ №3 ЗАДАНИЯ: 
 cum_freq(130:NO_OF_SYMBOLS+1) = cum_freq(130:NO_OF_SYMBOLS+1) +6000;
 
-for ij=2:64   %К ПУНКТУ №2 ЗАДАНИЯ ij=64:-1:2 
+%for ij=2:64   %К ПУНКТУ №2 ЗАДАНИЯ ij=64:-1:2 
+for ij=64:-1:2
     i = ii(ij);
     j = jj(ij);
     for ind = 1:4096
@@ -160,7 +161,7 @@ figure
 hold on
 grid on
 plot(bpp1, PSNR1, '*', 'LineWidth', 1.25)
-p1 = plot(bpp1, PSNR1, 'b', 'LineWidth', 1.25, 'DisplayName', 'Прямой порядок');
+p1 = plot(bpp1, PSNR1, 'b', 'LineWidth', 1.25, 'DisplayName', 'task1');
 
 %plot(bpp2, PSNR2, '*r', 'LineWidth', 1.25)
 %p2 = plot(bpp2, PSNR2, 'r', 'LineWidth', 1.25, 'DisplayName', 'Обратный порядок');

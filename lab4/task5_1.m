@@ -8,7 +8,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clc
 clear
-quality = [25 50 75 95];  % Параметр качества выбираем целым из диапазона ~ 1..100
+quality = [1 5 10 20 30 40 50 60 70 80 90 100];  % Параметр качества выбираем целым из диапазона ~ 1..100
 I = im2double(imread('1.gif'));  %обрабатываемое изображение
 for my_ind = 1:length(quality)
 
@@ -60,8 +60,7 @@ ii = [1 1 2 3 2 1 1 2 3 4 5 4 3 2 1 1 2 3 4 5 6 7 6 5 4 3 2 1 ....
  1 2 3 4 5 6 7 8 8 7 6 5 4 3 2 3 4 5 6 7 8 8 7 6 5 4 5 6 7 8 8 7 6 7 8 8];
 jj = [ 1 2 1 1 2 3 4 3 2 1 1 2 3 4 5 6 5 4 3 2 1 1 2 3 4 5 6 7 8 ....
     7 6 5 4 3 2 1 2 3 4 5 6 7 8 8 7 6 5 4 3 4 5 6 7 8 8 7 6 5 6 7 8 8 7 8];
-ii = ii(end:-1:1);
-jj = jj(end:-1:1);
+
 
 out = fopen('jp.ar',"w");  % выходной файл сжатых данных
 start_encoding;
@@ -70,7 +69,8 @@ start_encoding;
 cum_freq(130:NO_OF_SYMBOLS+1) = cum_freq(130:NO_OF_SYMBOLS+1) +6000;
 
 fprintf("Кодирование...\n");
-for ij=2:64   %К ПУНКТУ №2 ЗАДАНИЯ ij=64:-1:2
+%for ij=2:64   %К ПУНКТУ №2 ЗАДАНИЯ ij=64:-1:2
+for ij=64:-1:2
     %  AC-коэффициенты 
     i = ii(ij);
     j = jj(ij);
@@ -109,7 +109,8 @@ start_decoding;
 % К ПУНКТУ №3 ЗАДАНИЯ: 
 cum_freq(130:NO_OF_SYMBOLS+1) = cum_freq(130:NO_OF_SYMBOLS+1) +6000;
 
-for ij=2:64   %К ПУНКТУ №2 ЗАДАНИЯ ij=64:-1:2 
+%for ij=2:64   %К ПУНКТУ №2 ЗАДАНИЯ ij=64:-1:2 
+for ij=64:-1:2
     i = ii(ij);
     j = jj(ij);
     for ind = 1:4096
@@ -156,7 +157,7 @@ s = dir('jp.ar');
 the_size = s.bytes;
 bpp5(my_ind) = 8 * the_size / 512^2
 %imwrite(im2uint8(I2),strcat('Q_quality=', num2str(quality(my_ind)), '_bpp=', num2str(bpp5(my_ind)), '.gif'),'gif');
-%imwrite(im2uint8(I2),strcat('Q1_quality=', num2str(quality(my_ind)), '_bpp=', num2str(bpp5(my_ind)), '.gif'),'gif');
+imwrite(im2uint8(I2),strcat('Q1_quality=', num2str(quality(my_ind)), '_bpp=', num2str(bpp5(my_ind)), '.gif'),'gif');
 end
 %%
 close all
