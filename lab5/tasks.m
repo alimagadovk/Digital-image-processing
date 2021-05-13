@@ -118,51 +118,56 @@ I = imread('rice.png');
 figure
 imshow(I)
 
-J_sob_x = imfilter(I, fspecial('sobel'), 'symmetric');
+J_sob_x1 = imfilter(I, fspecial('sobel'), 'symmetric');
 
+J_sob_x2 = imfilter(I, -fspecial('sobel'), 'symmetric');
 
-J_sob_y = imfilter(I, fspecial('sobel')', 'symmetric');
+J_sob_y1 = imfilter(I, fspecial('sobel')', 'symmetric');
 
-figure
-imshow(sqrt(double(J_sob_x.^2 + J_sob_y.^2)))
-
-figure
-imshow(imadjust(sqrt(double(J_sob_x.^2 + J_sob_y.^2)), [], [1 0]))
+J_sob_y2 = imfilter(I, -fspecial('sobel')', 'symmetric');
 
 figure
-imshow(abs(J_sob_x) + abs(J_sob_y))
+imshow(sqrt(double(J_sob_x1.^2 + J_sob_y1.^2 + J_sob_x2.^2 + J_sob_y2.^2)))
 
 figure
-imshow(imadjust(abs(J_sob_x) + abs(J_sob_y), [], [1 0]))
+imshow(imadjust(sqrt(double(J_sob_x1.^2 + J_sob_y1.^2 + J_sob_x2.^2 + J_sob_y2.^2)), [], [1 0]))
+
+figure
+imshow(abs(J_sob_x1) + abs(J_sob_x2) + abs(J_sob_y1) + abs(J_sob_y2))
+
+figure
+imshow(imadjust(abs(J_sob_x1) + abs(J_sob_x2) + abs(J_sob_y1) + abs(J_sob_y2), [], [1 0]))
 
 
 
 dfdx = [-1 0; 0 1];
 dfdy = [0 -1; 1 0];
-J_rob_x = imfilter(I, dfdx, 'symmetric');
-J_rob_y = imfilter(I, dfdx, 'symmetric');
+J_rob_x1 = imfilter(I, dfdx, 'symmetric');
+J_rob_y1 = imfilter(I, dfdy, 'symmetric');
+J_rob_x2 = imfilter(I, -dfdx, 'symmetric');
+J_rob_y2 = imfilter(I, -dfdy, 'symmetric');
 
 figure
-imshow(sqrt(double(J_rob_x.^2 + J_rob_y.^2)))
+imshow(sqrt(double(J_rob_x1.^2 + J_rob_y1.^2 + J_rob_x2.^2 + J_rob_y2.^2)))
 
 figure
-imshow(imadjust(sqrt(double(J_rob_x.^2 + J_rob_y.^2)), [], [1 0]))
+imshow(imadjust(sqrt(double(J_rob_x1.^2 + J_rob_y1.^2 + J_rob_x2.^2 + J_rob_y2.^2)), [], [1 0]))
 
 figure
-imshow(abs(J_rob_x) + abs(J_rob_y))
+imshow(abs(J_rob_x1) + abs(J_rob_y1) + abs(J_rob_x2) + abs(J_rob_y2))
 
 figure
-imshow(imadjust(abs(J_rob_x) + abs(J_rob_y), [], [1 0]))
+imshow(imadjust(abs(J_rob_x1) + abs(J_rob_y1) + abs(J_rob_x2) + abs(J_rob_y2), [], [1 0]))
 
 % imwrite(I, 'task5_original_im.png', 'png')
-% imwrite(sqrt(double(J_sob_x.^2 + J_sob_y.^2)), 'task5_sob_sqrt.png', 'png')
-% imwrite(imadjust(sqrt(double(J_sob_x.^2 + J_sob_y.^2)), [], [1 0]), 'task5_sob_sqrt_neg.png', 'png')
-% imwrite(abs(J_sob_x) + abs(J_sob_y), 'task5_sob_abs.png', 'png')
-% imwrite(imadjust(abs(J_sob_x) + abs(J_sob_y), [], [1 0]), 'task5_sob_abs_neg.png', 'png')
-% imwrite(sqrt(double(J_rob_x.^2 + J_rob_y.^2)), 'task5_rob_sqrt.png', 'png')
-% imwrite(imadjust(sqrt(double(J_rob_x.^2 + J_rob_y.^2)), [], [1 0]), 'task5_rob_sqrt_neg.png', 'png')
-% imwrite(abs(J_rob_x) + abs(J_rob_y), 'task5_rob_abs.png', 'png')
-% imwrite(imadjust(abs(J_rob_x) + abs(J_rob_y), [], [1 0]), 'task5_rob_abs_neg.png', 'png')
+% imwrite(sqrt(double(J_sob_x1.^2 + J_sob_y1.^2 + J_sob_x2.^2 + J_sob_y2.^2)), 'task5_sob_sqrt.png', 'png')
+% imwrite(imadjust(sqrt(double(J_sob_x1.^2 + J_sob_y1.^2 + J_sob_x2.^2 + J_sob_y2.^2)), [], [1 0]), 'task5_sob_sqrt_neg.png', 'png')
+% imwrite(abs(J_sob_x1) + abs(J_sob_x2) + abs(J_sob_y1) + abs(J_sob_y2), 'task5_sob_abs.png', 'png')
+% imwrite(imadjust(abs(J_sob_x1) + abs(J_sob_x2) + abs(J_sob_y1) + abs(J_sob_y2), [], [1 0]), 'task5_sob_abs_neg.png', 'png')
+% imwrite(sqrt(double(J_rob_x1.^2 + J_rob_y1.^2 + J_rob_x2.^2 + J_rob_y2.^2)), 'task5_rob_sqrt.png', 'png')
+% imwrite(imadjust(sqrt(double(J_rob_x1.^2 + J_rob_y1.^2 + J_rob_x2.^2 + J_rob_y2.^2)), [], [1 0]), 'task5_rob_sqrt_neg.png', 'png')
+% imwrite(abs(J_rob_x1) + abs(J_rob_y1) + abs(J_rob_x2) + abs(J_rob_y2), 'task5_rob_abs.png', 'png')
+% imwrite(imadjust(abs(J_rob_x1) + abs(J_rob_y1) + abs(J_rob_x2) + abs(J_rob_y2), [], [1 0]), 'task5_rob_abs_neg.png', 'png')
 %% task 6
 clc
 clear
@@ -172,19 +177,21 @@ I = imread('Lena.png');
 figure
 imshow(I)
 
-J_sob_x = imfilter(I, fspecial('sobel'), 'symmetric');
+J_sob_x1 = imfilter(I, fspecial('sobel'), 'symmetric');
+J_sob_x2 = imfilter(I, -fspecial('sobel'), 'symmetric');
 
 
-J_sob_y = imfilter(I, fspecial('sobel')', 'symmetric');
+J_sob_y1 = imfilter(I, fspecial('sobel')', 'symmetric');
+J_sob_y2 = imfilter(I, -fspecial('sobel')', 'symmetric');
 
 figure
-imshow(abs(J_sob_x) + abs(J_sob_y))
+imshow(abs(J_sob_x1) + abs(J_sob_y1) + abs(J_sob_x2) + abs(J_sob_y2))
 
 figure
-imshow(imadjust(abs(J_sob_x) + abs(J_sob_y), [], [1 0]))
+imshow(imadjust(abs(J_sob_x1) + abs(J_sob_y1) + abs(J_sob_x2) + abs(J_sob_y2), [], [1 0]))
 
-% imwrite(abs(J_sob_x) + abs(J_sob_y), 'task6_res.png', 'png')
-% imwrite(imadjust(abs(J_sob_x) + abs(J_sob_y), [], [1 0]), 'task6_neg.png', 'png')
+%imwrite(abs(J_sob_x1) + abs(J_sob_y1) + abs(J_sob_x2) + abs(J_sob_y2), 'task6_res.png', 'png')
+%imwrite(imadjust(abs(J_sob_x1) + abs(J_sob_y1) + abs(J_sob_x2) + abs(J_sob_y2), [], [1 0]), 'task6_neg.png', 'png')
 %% task 7
 clc
 clear
